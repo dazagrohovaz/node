@@ -74,6 +74,10 @@ var four = require('../fixtures/nested-index/four'),
 assert.equal(four, fourFour);
 assert.equal(four, fourFolder);
 
+common.debug('test package.json require() loading');
+assert.equal(require('../fixtures/packages/main').ok, 'ok',
+             'Failed loading package');
+
 common.debug('test cycles containing a .. path');
 var root = require('../fixtures/cycles/root'),
     foo = require('../fixtures/cycles/folder/foo');
