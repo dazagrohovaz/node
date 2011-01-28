@@ -51,7 +51,7 @@ A module prefixed with `'./'` is relative to the file calling `require()`.
 That is, `circle.js` must be in the same directory as `foo.js` for
 `require('./circle')` to find it.
 
-Without the leading `'./'`, like `require('assert')` the module is searched
+Without the leading `'./'`, like `require('foo')` the module is searched
 for in the `require.paths` array. `require.paths` on my system looks like
 this:
 
@@ -64,10 +64,12 @@ That is, when `require('foo')` is called Node looks for:
 * 3: `/home/ryan/.node_modules/foo.node`
 * 4: `/home/ryan/.node_modules/foo/index.js`
 * 5: `/home/ryan/.node_modules/foo/index.node`
+* 6: `/home/ryan/.node_modules/foo/foo.js`
+* 7: `/home/ryan/.node_modules/foo/foo.node`
 
 interrupting once a file is found. Files ending in `'.node'` are binary Addon
-Modules; see 'Addons' below. `'index.js'` allows one to package a module as
-a directory.
+Modules; see 'Addons' below. `'index.js'` and `'foo.js`' allow
+one to package a module as a directory.
 
 `require.paths` can be modified at runtime by simply unshifting new
 paths onto it, or at startup with the `NODE_PATH` environmental

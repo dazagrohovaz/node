@@ -67,6 +67,13 @@ var three = require('../fixtures/nested-index/three'),
 assert.equal(threeFolder, threeIndex);
 assert.notEqual(threeFolder, three);
 
+common.debug('test folder with a js file of the same name.');
+var four = require('../fixtures/nested-index/four'),
+    fourFour = require('../fixtures/nested-index/four/four.js'),
+    fourFolder = require('../fixtures/nested-index/four/');
+assert.equal(four, fourFour);
+assert.equal(four, fourFolder);
+
 common.debug('test cycles containing a .. path');
 var root = require('../fixtures/cycles/root'),
     foo = require('../fixtures/cycles/folder/foo');
